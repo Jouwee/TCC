@@ -11,33 +11,8 @@
 \usepackage{amsmath}
 \usepackage{listings}
 \usepackage[labelfont=bf,textfont=md]{caption}
-% ---
 \usepackage{lipsum}				% para geração de dummy text
-% ---
-\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
 \usepackage[alf]{abntex2cite}	% Citações padrão ABNT
-
-% --- 
-% CONFIGURAÇÕES DE PACOTES
-% --- 
-
-% ---
-% Configurações do pacote backref
-% Usado sem a opção hyperpageref de backref
-\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
-% Texto padrão antes do número das páginas
-\renewcommand{\backref}{}
-% Define os textos da citação
-\renewcommand*{\backrefalt}[4]{
-	\ifcase #1 %
-		Nenhuma citação no texto.%
-	\or
-		Citado na página #2.%
-	\else
-		Citado #1 vezes nas páginas #2.%
-	\fi}%
-% ---
-
 
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
@@ -49,8 +24,7 @@
 \orientador{MARTA ROSECLER BEZ}
 \instituicao{UNIVERSIDADE FEEVALE}
 \tipotrabalho{Tese (Doutorado)}
-% O preambulo deve conter o tipo do trabalho, o objetivo, 
-% o nome da instituição e a área de concentração 
+% O preambulo deve conter o tipo do trabalho, o objetivo, o nome da instituição e a área de concentração 
 \preambulo{Trabalho de Conclusão de Curso apresentado como requisito parcial à obtenção do grau de Bacharel em Ciência da Computação pela Universidade Feevale}
 % ---
 
@@ -58,7 +32,7 @@
 % Configurações de aparência do PDF final
 
 % alterando o aspecto da cor azul
-\definecolor{blue}{RGB}{41,5,195}
+\definecolor{blue}{RGB}{0,0,255}
 \definecolor{black}{RGB}{0,0,0}
 
 % informações do PDF
@@ -72,7 +46,7 @@
 		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
 		colorlinks=true,       		% false: boxed links; true: colored links
     	linkcolor=black,          	% color of internal links
-    	citecolor=blue,        		% color of links to bibliography
+    	citecolor=black,       		% color of links to bibliography
     	filecolor=magenta,    		% color of file links
 		urlcolor=blue,
 		bookmarksdepth=4
@@ -478,7 +452,7 @@ A seleção correta do valor de limiar é crucial para que o processo de segment
 \begin{figure}[ht]
 \centering
 \caption{\textbf{Demonstração de diferentes limiares. (a) 100 (b) 150 (c) 200 (d) 230}}
-\includegraphics[width=0.9\textwidth]{imagens/PDI_Limiarizacao_2.pdf}
+\includegraphics[width=0.4\textwidth]{imagens/PDI_Limiarizacao_2.pdf}
 \sourceAuthor
 \label{fig:PDI_Limiarizacao_2}
 \end{figure}
@@ -926,7 +900,7 @@ Segunda iteração:
 Neste capítulo serão apresentados trabalhos relacionados a área de pesquisa deste projeto.
 
 
-\section{O Uso do Algoritmo Genético em Segmentação de Imagens Digitais \cite{matias:2007}}
+\section{O Uso do Algoritmo Genético em Segmentação de Imagens Digitais}
 
 A tese desenvolvida por \citet{matias:2007} aplica algoritmos genéticos com diferentes funções de avaliação para evoluir a parametrização de diversos três métodos de segmentação de imagens digitais, comparando seu resultado. Os algoritmos de segmentação analisados são \textit{quadtrees}, limiarização e crescimento de regiões.
 
@@ -989,7 +963,7 @@ Com GA                                     & 90,44\%                            
 
 Dessa maneira \citet{matias:2007} verificou que o uso do GA com uma função objetivo adequada pode trabalhar muito bem em conjunto com algoritmos de segmentação, na busca de bons parâmetros de entrada iniciais. Isso foi comprovado nos três algoritmos testados: limiarização, \textit{quadtrees} e crescimento de regiões.
 
-\section{\textit{A genetic algorithm for image segmentation} \cite{bosco:2001}}
+\section{\textit{A genetic algorithm for image segmentation}}
 
 % TODO: Resumir
 
@@ -1104,7 +1078,7 @@ the penguin image.
 
 \end{comment}
 
-\section{A multilevel automatic thresholding method based on a genetic algorithm for a fast image segmentation \cite{hammouche:2008}}
+\section{A multilevel automatic thresholding method based on a genetic algorithm for a fast image segmentation}
 
 % TODO: Resumir
 
