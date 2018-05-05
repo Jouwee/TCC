@@ -368,9 +368,19 @@ O histograma de uma imagem fornece uma indicação de sua qualidade quanto ao n�
 
 \section{Limiarização}
 
-% TODO: Algoritmo
+Segundo \citet{pedrini:2008}, a limiarização ou thresholding é uma das técnicas mais simples de segmentação e consiste na classificação dos pixels de uma imagem de acordo com a especificação de um ou mais limiares. Cada pixel da imagem será classificado com base nos limiares definidos, de forma que a limiarização pode ser definida como \[f(x,y)=\left\{\begin{matrix} l_1, se f(x,y) \leq T_1) \\ l_2, se T_1 < f(x,y) \leq T_2)\\ l_3, se T_2 < f(x,y) \leq T_3)\\ ...\\ l_n, se f(x,y) > T_{n-1}) \end{matrix}\right.\] tal que, para cada intervalo \(T_n\), é especificado um nível de cinza correspondente \(l_n\). O algoritmo para a limiarização pode ser visto no Algoritmo~\ref{alg:Threshold}.
 
-Segundo \citet{pedrini:2008}, a limiarização ou thresholding é uma das técnicas mais simples de segmentação e consiste na classificação dos pixels de uma imagem de acordo com a especificação de um ou mais limiares. Cada pixel da imagem será classificado com base nos limiares definidos, de forma que a limiarização pode ser definida como \[f(x,y)=\left\{\begin{matrix} l_1, se f(x,y) \leq T_1) \\ l_2, se T_1 < f(x,y) \leq T_2)\\ l_3, se T_2 < f(x,y) \leq T_3)\\ ...\\ l_n, se f(x,y) > T_{n-1}) \end{matrix}\right.\] tal que, para cada intervalo \(T_n\), é especificado um nível de cinza correspondente \(l_n\).
+\begin{lstlisting}[caption={Algoritmo para limiatrização}, label=alg:Threshold, numbers=left]
+para x = 0 ate M - 1 faca
+    para y = 0 ate N - 1 faca
+      se H[f(x,y)] < T1
+         H[f(x,y)] = l1
+      senao se H[f(x,y)] < T2
+         H[f(x,y)] = l2
+      [...]
+      senao 
+         H[f(x,y)] = ln
+\end{lstlisting}
 
 Quando a limiarização possui apenas um limiar ela é denominada binarização, pois a imagem resultante possui apenas dois valores de intensidade, 0 (preto) ou 1 (branco) \cite{pedrini:2008}. A forma mais comum para a identificação de um limiar adequado é a análise do histograma da imagem, visando identificar o ponto de corte entre as grandes concentrações de valores \cite{gonzalez:2012}. Um exemplo de binarização pode ser visto na Figura~\ref{fig:PDI_Limiarizacao}, demonstrando a imagem original (a), o histograma da imagem (b) e a imagem resultante da aplicação do limiar de  203 (c).
 
@@ -394,11 +404,15 @@ A seleção correta do valor de limiar é crucial para que o processo de segment
 
 \section{Brilho e contraste}
 
-% TODO: Algoritmo
-
 Conforme \citet{pedrini:2008}, o brilho está associado à sensação visual de intensidade luminosa ou luminância de uma fonte. Em imagens digitais o brilho é diretamente relacionado ao valor do pixel de uma imagem. Já o contraste pode ser definido como uma medida de variação relativa da luminância, ou seja, da intensidade luminosa por unidade de área.
 
-Para realizar alterações no brilho ou contraste de um pixel da imagem, pode ser utilizada a transformação descrita pela função \(g(x,y)=a.f(x,y)+b\), tal que o parâmetro \(a\) controla a escala de níveis de cinza da imagem (contraste) e \(b\) ajusta seu brilho \cite{pedrini:2008}. O valor de \(f(x,y)\) é o valor atual do pixel na posição calculada e o valor de \(g(x,y)\) é o valor do pixel na nova imagem. Na Figura~\ref{fig:PDI_Brilho_e_Contraste} é possível ver a diferença causada pela aplicação da função com diferentes parâmetros para \(a\) e \(b\) \cite{pedrini:2008}.
+Para realizar alterações no brilho ou contraste de um pixel da imagem, pode ser utilizada a transformação descrita pela função \(g(x,y)=a.f(x,y)+b\), tal que o parâmetro \(a\) controla a escala de níveis de cinza da imagem (contraste) e \(b\) ajusta seu brilho \cite{pedrini:2008}. O valor de \(f(x,y)\) é o valor atual do pixel na posição calculada e o valor de \(g(x,y)\) é o valor do pixel na nova imagem. Na Figura~\ref{fig:PDI_Brilho_e_Contraste} é possível ver a diferença causada pela aplicação da função com diferentes parâmetros para \(a\) e \(b\) \cite{pedrini:2008}. O algoritmo para aplicação do brilho e contraste pode ser vista no Algoritmo~\ref{alg:Brilho_Contraste}
+
+\begin{lstlisting}[caption={Algoritmo para aplicação de brilho e contraste}, label=alg:Brilho_Contraste, numbers=left]
+para x = 0 ate M - 1 faca
+    para y = 0 ate N - 1 faca
+      H[f(x,y)] = a * H[f(x,y)] + b
+\end{lstlisting}
 
 \begin{figure}[ht]
 \centering
@@ -435,8 +449,6 @@ A morfologia matemática utiliza a teoria de conjuntos para representar a forma 
 Um operador morfológico é um mapeamento entre o conjunto A que define a imagem e um conjunto B, chamado de elemento estruturante. O elemento estruturante é expresso com respeito a uma origem local \cite{pedrini:2008}.
 
 \subsection{Dilatação e Erosão}
-
-% TODO: Algoritmo
 
 A operação de dilatação entre o conjunto A e um elemento estruturante B é definida como a adição de \citet{minkowski:1911}, ou seja: \[D(A,B)=A\oplus B=\bigcup_{b\in B}^{ } (A+b)\]
 
@@ -476,8 +488,6 @@ De acordo com esta equação, o resultado da erosão pode ser calculado como o c
 
 \subsection{Abertura e Fechamento}
 
-% TODO: Algoritmo
-
 Duas outras operações morfológicas importantes em análise de imagens são a abertura e o fechamento. A abertura de A por B é definida como \(A \circ  B = (A \ominus B) \oplus A\) \cite{pedrini:2008}. Isso significa que a abertura é a erosão de A por B, seguida da dilatação da imagem resultante por A.
 
 O fechamento de A por B é definido como \(A \bullet  B = (A \oplus B) \ominus A\) \cite{pedrini:2008}. Ou seja, é realizada a dilatação de A por B, seguida da erosão da imagem resultante por B.
@@ -486,8 +496,6 @@ Na Figura X é possível visualizar o efeito dos processos de abertura e fechame
 % TODO: Figura
 
 \section{Filtragem da Imagem}
-
-% TODO: Algoritmo
 
 Conforme \citet{conci:2003}, o uso de filtros em imagens objetiva melhorar a qualidade das imagens através da amplificação do seu contraste, eliminação de padrões periódicos ou aleatórios (como ruídos ou imperfeições das imagens), melhoria no seu foco e acentuação de características. Os filtros podem ser classificados como passa-baixa e passa-alta.
 	
@@ -731,8 +739,6 @@ Os principais métodos de segmentação baseada em regiões podem ser classifica
 
 \subsection{Crescimento de Regiões}
 
-% TODO: Algoritmo
-
 A segmentação baseada no crescimento de regiões se dá pela escolha de N pixels denominados sementes (ou \textit{seed}) onde, a partir deles, são crescidas as regiões anexando a cada ponto semente outros pixels que possuem propriedades similares. Os pixels semente podem ser escolhidos de forma aleatória, determinística ou empírica pelo usuário \cite{pedrini:2008}. O número de regiões segmentadas será sempre menor ou igual ao número de pontos sementes selecionados, mas nunca maior.
 
 O predicado \(P\) a ser usado para agregar um pixel em uma das regiões verifica se a diferença absoluta entre os níveis de cinza desse pixel e o da semente é menor que um dado limitar \(T\), ou seja
@@ -753,8 +759,6 @@ Segundo \citet{pedrini:2008}, a segmentação baseada em divisão de regiões in
 Uma técnica comum de subdivisão da imagem em regiões homogêneas utiliza a representação quadtree, que é uma estrutura hierárquica baseada na decomposição recursiva e regular da imagem em quadrantes, de maneira que, para qualquer região \(R_i\), \(P(R_i) = \textup{VERDADEIRO}\). Ou seja, se \(P(R) = \textup{FALSO}\) então a imagem deve ser dividida em quadrantes. Se o predicado \(P\) for \(\textup{FALSO}\) para qualquer quadrante, o quadrante deve ser subdividido em subquadrantes e assim por diante \cite{pedrini:2008}.
 
 \subsection{\textit{Watershed}}
-
-% TODO: Algoritmo
 
 Segundo \citet{pedrini:2008} o algoritmo de \textit{watershed} ou divisor de águas trata a imagem como se fosse uma superfície topográfica, onde as intensidades dos pixels correspondem a valores de altitude ou elevação. É efetuado então um processo chamado imersão onde os pontos de menor altitude (intensidade) passam a ser preenchidos de água, formando bacias. Quando duas bacias se encontram, uma linha de contenção é criada entre as bacias, definindo assim uma borda da imagem. O processo é executado até que toda a superfície tenha sido inundada.
 
@@ -779,8 +783,6 @@ O algoritmo de Stentiford foi proposto por \citet{stentiford:1983}, e adota uma 
 \end{figure}
 
 Na Figura~\ref{fig:PDI_Stentiford_1} são demonstradas as máscaras utilizadas pelo algoritmo, onde os círculos brancos representam pixels de valor zero, os círculos pretos representam os pixels de valor 1 e os X representam os pixels com valores irrelevantes. Cada máscara percorre a imagem em uma determinada ordem: M1 da esquerda para a direita, de cima para baixo; M2 da esquerda para a direita, de baixo para cima; M3 da direita para a esquerda, de baixo para cima; e M4 da direita para a esquerda, de cima para baixo.
-
-% TODO: <Algoritmo>
 
 \subsubsection{Zang Suen}
 
