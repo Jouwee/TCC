@@ -563,7 +563,7 @@ Os filtros passa-altas atenuam ou eliminam os componentes de baixa-frequência, 
 
 % TODO: Marta: Tens que complementar dizendo que deve ser somado o valor obtido da gradiente em x e y elevadas ao quadrado cada e extraída a raiz quadrada do resultado. O valor resultante deve ser comparado a um limiar, identificando se o ponto é ou não a borda e pintando, caso seja, de branco (255)
 
-O operador de Sobel foi proposto por \citet{sobel:1968}. Ele é composto por duas máscaras que aproximam a magnitude do gradiente com as diferenças dos níveis de cinza da imagem. Ao efetuar operações de convolução dessas máscaras com a imagem, as variações de intensidade dos níveis de cinza são detectadas \cite{pedrini:2008}.
+O operador de Sobel foi proposto por \citet{sobel:1968}. Ele é composto por duas máscaras que aproximam a magnitude do gradiente com as diferenças dos níveis de cinza da imagem. Os dois gradientes representam, respectivamente, as variações de intensidade no eixo horizontal (\(G_x\)) e vertical (\(G_y\)). Ao efetuar operações de convolução dessas máscaras com a imagem, as variações de intensidade dos níveis de cinza em cada eixo são detectadas. O resultado final da convolução é dado por \(\sqrt[2]{G_x^2 + G_y^2}\). Este valor resultante deve então ser aplicado a um limiar, identificando se o ponto é ou não a borda \cite{pedrini:2008}.
 
 \begin{table}[]
 \centering
@@ -730,14 +730,14 @@ Os principais métodos de segmentação baseada em regiões podem ser classifica
 
 A segmentação baseada no crescimento de regiões se dá pela escolha de N pixels denominados sementes (ou \textit{seed}) onde, a partir deles, são crescidas as regiões anexando a cada ponto semente outros pixels que possuem propriedades similares. Os pixels semente podem ser escolhidos de forma aleatória, determinística ou empírica pelo usuário \cite{pedrini:2008}. O número de regiões segmentadas será sempre menor ou igual ao número de pontos sementes selecionados, mas nunca maior.
 
-O predicado P a ser usado para agregar um pixel em uma das regiões verifica se a diferença absoluta entre os níveis de cinza desse pixel e o da semente é menor que um dado limitar \(T\), ou seja
+O predicado \(P\) a ser usado para agregar um pixel em uma das regiões verifica se a diferença absoluta entre os níveis de cinza desse pixel e o da semente é menor que um dado limitar \(T\), ou seja
 
 \[P(R) = \left\{\begin{matrix}
 \textup{VERDADEIRO}, & \textup{se }|f(x,y) - f(r,s)| \leq T\\ 
 \textup{FALSO}, & \textup{caso contrário}
 \end{matrix}\right.\]
 
-em que f(r,s) representa o pixel semente e f(x,y) representa os pixels conectados ao pixel semente por vizinhança-8 \cite{pedrini:2008}. Qualquer pixel que satisfaça essa propriedade simultaneamente para ambas é (arbitrariamente) atribuído a região R1. Na Figura X é possível ver a aplicação de um crescimento de regiões em uma imagem de entrada utilizando os pixels semente delimitados em (a), com as regiões delimitadas utilizando T=4 (b) e T=8 (b).
+em que \(f(r,s)\) representa o pixel semente e \(f(x,y)\) representa os pixels conectados ao pixel semente por vizinhança-8 \cite{pedrini:2008}. Qualquer pixel que satisfaça essa propriedade simultaneamente para ambas é (arbitrariamente) atribuído a região \(R_1\). Na Figura X é possível ver a aplicação de um crescimento de regiões em uma imagem de entrada utilizando os pixels semente delimitados em (a), com as regiões delimitadas utilizando \(T=4\) (b) e \(T=8\) (b).
 
 % TODO: Figura
 
