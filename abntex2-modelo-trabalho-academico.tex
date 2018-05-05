@@ -15,27 +15,19 @@
 \usepackage[alf]{abntex2cite}	% Citações padrão ABNT
 
 % ---
-% Informações de dados para CAPA e FOLHA DE ROSTO
-% ---
 \titulo{O USO DE ALGORITMOS GENÉTICOS PARA SEGMENTAÇÃO AUTOMÁTICA DE IMAGENS}
 \autor{NÍCOLAS POHREN}
 \local{Novo Hamburgo}
 \data{2018}
-\orientador{MARTA ROSECLER BEZ}
+\orientador{Marta Rosecler Bez}
 \instituicao{UNIVERSIDADE FEEVALE}
 \tipotrabalho{Tese (Doutorado)}
 % O preambulo deve conter o tipo do trabalho, o objetivo, o nome da instituição e a área de concentração 
 \preambulo{Trabalho de Conclusão de Curso apresentado como requisito parcial à obtenção do grau de Bacharel em Ciência da Computação pela Universidade Feevale}
-% ---
 
 % ---
 % Configurações de aparência do PDF final
 
-% alterando o aspecto da cor azul
-\definecolor{blue}{RGB}{0,0,255}
-\definecolor{black}{RGB}{0,0,0}
-
-% informações do PDF
 \makeatletter
 \hypersetup{
      	%pagebackref=true,
@@ -55,9 +47,6 @@
 % --- 
 
 % --- 
-% Espaçamentos entre linhas e parágrafos 
-% --- 
-
 % O tamanho do parágrafo é dado por:
 \setlength{\parindent}{1.5cm}
 
@@ -65,46 +54,20 @@
 \setlength{\parskip}{0.2cm}  % tente também \onelineskip
 
 % ---
-% compila o indice
-% ---
 \makeindex
 % ---
 
-% ----
-% Início do documento
 % ----
 \begin{document}
 
 % Retira espaço extra obsoleto entre as frases.
 \frenchspacing 
 
-% ----------------------------------------------------------
-% ELEMENTOS PRÉ-TEXTUAIS
-% ----------------------------------------------------------
-% \pretextual
-
-% ---
-% Capa
-% ---
 \imprimircapa
-% ---
-% ---
-% Folha de rosto
-% ---
 \imprimirfolhaderosto
-% ---
 
-% ---
-% Agradecimentos
-% ---
+% TODO: Não ta imprimindo certo
 \imprimiragradecimento{Os agradecimentos principais são direcionados a todo mundo...}
-
-% ---
-
-% ---
-
-% ---
-% RESUMOS
 % ---
 
 % resumo em português
@@ -137,25 +100,12 @@
 \end{resumo}
 
 % ---
-
-% ---
-% inserir lista de ilustrações
-% ---
 \pdfbookmark[0]{\listfigurename}{lof}
 \listoffigures*
 \cleardoublepage
-% ---
-
-% ---
-% inserir lista de tabelas
-% ---
 \pdfbookmark[0]{\listtablename}{lot}
 \listoftables*
 \cleardoublepage
-% ---
-
-% ---
-% inserir lista de abreviaturas e siglas
 % ---
 \begin{siglas}
   \item[Fig.] Area of the $i^{th}$ component
@@ -164,10 +114,6 @@
   \item[lauro cesar] este é o meu nome
 \end{siglas}
 % ---
-
-% ---
-% inserir lista de símbolos
-% ---
 \begin{simbolos}
   \item[$ \Gamma $] Letra grega Gama
   \item[$ \Lambda $] Lambda
@@ -175,22 +121,11 @@
   \item[$ \in $] Pertence
 \end{simbolos}
 % ---
-
-% ---
-% inserir o sumario
 % ---
 \pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents*
 \cleardoublepage
-% ---
-
-% TODO: Todas imagens de PDI tão caindo na  mesma página
-
-% ----------------------------------------------------------
-% ELEMENTOS TEXTUAIS
-% ----------------------------------------------------------
 \textual
-
 % ------------------------------------------------------------------------------------------------------------------------
 \chapter{Introdução}
 % ------------------------------------------------------------------------------------------------------------------------
@@ -219,7 +154,7 @@ Este processo é executado até que uma condição de terminação seja atingida
 
 Algoritmos genéticos (\textit{Genetic algorithms}, ou GA) são um ramo dos algoritmos evolucionários que traz conceitos da biologia genética como genes e cromossomos para os algoritmos evolucionários. Isso permite a melhor simulação de um sistema evolucionário próximo ao que existe na natureza, obtendo resultados de alta qualidade para problemas de otimização.
 
-Como os algoritmos genéticos fazem parte do grupo de algoritmos evolucionários, ele possui a mesma sequência de passos: inicialização, avaliação, simulação e criação de uma nova geração. O diferencial do algoritmo genético é o uso de cromossomos para representar um indivíduo. O cromossomo é uma sequência de valores, ou genes, que representa a solução daquele indivíduo.
+Como os algoritmos genéticos fazem parte do grupo de algoritmos evolucionários, eles possuem a mesma sequência de passos: inicialização, avaliação, simulação e criação de uma nova geração. O diferencial do algoritmo genético é o uso de cromossomos para representar um indivíduo. O cromossomo é uma sequência de valores, ou genes, que representa a solução daquele indivíduo.
 
 Para a criação das novas gerações, são utilizadas funções com base nos cromossomos. Alguns exemplos de operadores são o \textit{crossover}, que visa juntar dois cromossomos pais para criação de cromossomos filhos que herdam características de seus pais, e o operador de mutação, que simula a possibilidade natural de uma mutação genética. O fluxo de um algoritmo genético pode ser visto na Figura~\ref{fig:GA_luxo}.
 
@@ -243,7 +178,7 @@ Um cromossomo para o algoritmo genético é apenas uma sequência de valores ind
 
 \begin{figure}[ht]
 \centering
-\caption{\textbf{Todas variações possíveis de um cromossomo cujo bits 0, 1 e 2 representam o estado das cores vermelho, azul e verde respectivamente}}
+\caption{\textbf{Todas as variações possíveis de um cromossomo cujos bits 0, 1 e 2 representam o estado das cores vermelho, azul e verde respectivamente}}
 \includegraphics[width=0.8\textwidth]{imagens/GA_Cromossomo_RGB.pdf}
 \sourceAuthor	
 \label{fig:GA_Cromossomo_RGB}
@@ -276,13 +211,13 @@ Para solucionar este problema, é possível utilizar outras técnicas como a de 
 \centering
 \caption{Exemplo de avaliações e normalização}
 \label{tab:Normalizacao_Avaliacao}
-\begin{tabular}{|r|r|r|}
+\begin{tabular}{rrr}
 \hline
-\multicolumn{1}{|l|}{\textbf{Indivíduo}} & \multicolumn{1}{l|}{\textbf{Avaliação}} & \multicolumn{1}{l|}{\textbf{Avaliação normalizada}} \\ \hline
-0                                        & 123,48                                  & 10                                                  \\ \hline
-1                                        & 68,42                                   & 9                                                   \\ \hline
-2                                        & 18,45                                   & 8                                                   \\ \hline
-3                                        & 18,38                                   & 7                                                   \\ \hline
+\multicolumn{1}{l}{\textit{\textbf{Indivíduo}}} & \multicolumn{1}{l}{\textit{\textbf{Avaliação}}} & \multicolumn{1}{l}{\textit{\textbf{Avaliação normalizada}}} \\ \hline
+0                                                & 123,48                                           & 10                                                           \\
+1                                                & 68,42                                            & 9                                                            \\
+2                                                & 18,45                                            & 8                                                            \\
+3                                                & 18,38                                            & 7    \\ \hline                                                       
 \end{tabular}
 \end{table}
 
@@ -298,13 +233,13 @@ O método mais comum para seleção de pais é o da roleta viciada. Para a reali
 \centering
 \caption{Exemplo de roleta viciada}
 \label{tab:Roleta}
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{lll}
 \hline
-Indivíduo & Avaliação & Pedaço da roleta (\%) \\ \hline
-0001      & 1         & 1.61                  \\ \hline
-0011      & 9         & 14.51                 \\ \hline
-0100      & 16        & 25.81                 \\ \hline
-0110      & 36        & 58.07                 \\ \hline
+\textit{\textbf{Indivíduo}} & \textit{\textbf{Avaliação}} & \textit{\textbf{Pedaço da roleta (\%)}} \\ \hline
+0001      & 1         & 1.61                  \\
+0011      & 9         & 14.51                 \\ 
+0100      & 16        & 25.81                 \\ 
+0110      & 36        & 58.07                 \\ 
 Total     & 62        & 100                   \\ \hline
 \end{tabular}
 \end{table}
@@ -315,7 +250,7 @@ Os indivíduos com uma avaliação menor ainda devem ter chance de serem selecio
 
 \subsection{Operadores Genéticos}
 
-Os operadores genéticos são funções aplicadas em cima de um ou mais cromossomos para a geração de novos cromossomos. Os exemplos mais simples de operadores genéticos são o \textit{crossover} e a mutação. O operador de \textit{crossover} é o responsável por gerar um novo cromossomo baseado em dois cromossomos pais. O operador de mutação é aplicado em um cromossomo para que ele tenha uma pequena chance de sofrer uma mutação genética em algum gene. Existe mais de uma técnica de \textit{crossover} e mutação, ambas podem ser parametrizadas e podem ou não ser executadas.
+Os operadores genéticos são funções aplicadas sobre um ou mais cromossomos para a geração de novos cromossomos. Os exemplos mais simples de operadores genéticos são o \textit{crossover} e a mutação. O operador de \textit{crossover} é o responsável por gerar um novo cromossomo baseado em dois cromossomos pais. O operador de mutação é aplicado em um cromossomo para que ele tenha uma pequena chance de sofrer uma mutação genética em algum gene. Existe mais de uma técnica de \textit{crossover} e mutação, ambas podem ser parametrizadas e podem ou não ser executadas.
 
 A técnica de \textit{crossover} mais simples é o \textit{crossover} de um ponto. No \textit{crossover} de um ponto são usados dois cromossomos pais para gerar dois cromossomos filhos. Para realizar um \textit{crossover} de um ponto, é selecionada uma posição aleatória do cromossomo, e ambos os cromossomos pais são cortados nesta posição. O primeiro filho é composto através da concatenação da parte esquerda do primeiro pai com a parte direita do segundo pai. O segundo filho é composto através da concatenação das partes que sobraram, ou seja, a metade esquerda do segundo pai com a metade à direita do primeiro pai \cite{linden:2008}. É possível ver, na Figura~\ref{fig:GA_Crossover_de_um_ponto}, um exemplo de \textit{crossover}  de um ponto sendo executado em um cromossomo de tamanho cinco com representação binária.
 
@@ -329,7 +264,7 @@ A técnica de \textit{crossover} mais simples é o \textit{crossover} de um pont
 
 Um problema gerado por um \textit{crossover} de um ponto é que se a combinação de melhor resultado depende que, por exemplo, o primeiro e o último gene sejam 1 (denominado de esquema 1 * * * 1 para um cromossomo de 5 genes), essa combinação pode não ser preservada no \textit{crossover}. Isso se deve ao fato de que pelo menos uma das duas metades do cromossomo será trocada com outro indivíduo, e se o indivíduo não tiver essa combinação, então este esquema será perdido \cite{linden:2008}.
 
-Existe outra forma de operação de crossover que possibilita a preservação de tais esquemas, chamada de \textit{crossover} uniforme. No \textit{crossover} uniforme para cada gene é sorteado um número zero ou um. Se o valor for igual a um, o filho número um recebe o gene da posição corrente do primeiro pai e o segundo filho o gene corrente do segundo pai. Por outro lado, se o valor sorteado for zero, as atribuições serão invertidas: o primeiro filho recebe o gene da posição corrente do segundo pai e o segundo filho recebe o gene corrente do primeiro pai \cite{linden:2008}. Na Figura~\ref{fig:GA_Crossover_Uniforme} é possível ver o funcionamento do \textit{crossover} uniforme, com um cromossomo de cinco bits.
+Existe outra forma de operação de \textit{crossover} que possibilita a preservação de tais esquemas, chamada de \textit{crossover} uniforme. No \textit{crossover} uniforme, para cada gene é sorteado um número zero ou um. Se o valor for igual a um, o filho número um recebe o gene da posição corrente do primeiro pai e o segundo filho o gene corrente do segundo pai. Por outro lado, se o valor sorteado for zero, as atribuições serão invertidas: o primeiro filho recebe o gene da posição corrente do segundo pai e o segundo filho recebe o gene corrente do primeiro pai \cite{linden:2008}. Na Figura~\ref{fig:GA_Crossover_Uniforme} é possível ver o funcionamento do \textit{crossover} uniforme, com um cromossomo de cinco bits.
 
 \begin{figure}[ht]
 \centering
@@ -349,14 +284,17 @@ Outro operador utilizado na criação de uma nova geração é o operador de mut
 \label{fig:GA_Mutacao}
 \end{figure}
 
-Anteriormente foi demonstrado o operador de \textit{crossover} para genes binários. Para genes numéricos, o operador de mutação ocorre trocando um gene por um novo valor completamente aleatório. Já para valores categóricos deve ser garantido que todas as categorias tenham o mesmo peso ou chance de serem obtidas \cite{linden:2008}.
+Anteriormente foi demonstrado o operador de \textit{crossover} para genes binários. Para genes numéricos, o operador de mutação ocorre trocando um gene por um novo valor completamente aleatório. Já para valores categóricos, deve ser garantido que todas as categorias tenham o mesmo peso ou chance de serem obtidas \cite{linden:2008}.
 
 Normalmente os operadores de \textit{crossover} e mutação não são executados em todos os indivíduos de todas gerações. No início do GA, é desejável executar muita reprodução e pouca mutação, visto que há muita diversidade genética e é importante explorar o máximo possível o espaço de soluções. Depois de um grande número de gerações, ocorre a convergência genética, o que implica na pouca diversidade na população, tornando extremamente interessante que o operador de mutação fosse escolhido mais frequentemente do que o de \textit{crossover}, para permitir que seja reinserida a diversidade genética na população \cite{linden:2008}.
 
 Seria necessário então que a probabilidade do operador de \textit{crossover} fosse caindo com o decorrer do algoritmo e que a probabilidade do operador de mutação fosse concomitantemente aumentando. Para tal, são utilizadas diversas técnicas de interpolação, como a linear, quadrática e descontínua \cite{linden:2008}.
 
+Algoritmos Genéticos são uma poderosa ferramenta para otimização de problemas. O GA pode ser utilizado em um problema com parâmetros pré-definidos e depois descartado, como é o caso do uso de GAs para otimizar o problema do caixeiro viajante \cite{grefenstette:1985}. Ou ainda o GA pode ser utilizado para evoluir um modelo que será reaproveitado em outras entradas, como é o caso da criação de uma árvore de decisão \textit{data mining} utilizando GAs \cite{carvalho:2004}. Neste trabalho, a saída do GA será um modelo reutilizável composto por técnicas de análise e processamento de imagens digitais, descritas no capítulo~\ref{chp:PDI}, para segmentação de imagens.
+
 % ------------------------------------------------------------------------------------------------------------------------
 \chapter{Análise e processamento de imagens digitais}
+\ref{chp:PDI}
 % ------------------------------------------------------------------------------------------------------------------------
 
 Este capítulo aborda o tema sobre processamento digital de imagens (PDI). Serão explicados os conceitos de imagem digital, pré-processamento e segmentação, tal como diversas técnicas para análise e manipulação de imagens.
@@ -499,22 +437,47 @@ Um operador morfológico é um mapeamento entre o conjunto A que define a imagem
 
 \subsection{Dilatação e Erosão}
 
-% TODO: Marta: Não ficou claro nem a dilatação nem a erosão... acredito que poderias mostrar uma imagem com o elemento estruturante sobre ela... que achas? 
-% TODO: Marta: Também poderia dizer que, de forma simples, soma-se os valores da máscara do elemento estruturante com os da imagem e permanecerá o maior valor sobre todos os pixels da máscara na imagem
+A operação de dilatação entre o conjunto A e um elemento estruturante B é definida como a adição de \citet{minkowski:1911}, ou seja: \[D(A,B)=A\oplus B=\bigcup_{b\in B}^{ } (A+b)\]
 
-A operação de dilatação entre o conjunto A e o elemento estruturante B é definida como a adição de \citet{minkowski:1911}, ou seja \[D(A,B)=A\oplus B=\bigcup_{b\in B}^{ } (A+b)\]De acordo com esta equação, o processo de dilatação entre \(A\) e \(B\) corresponde ao conjunto de todas as translações de B com os pontos da imagem em que há pelo menos um elemento não nulo (com valor 1) em comum com o conjunto \(A\) \cite{pedrini:2008}. O processo de dilatação pode ser visualizado na Figura X.
+De acordo com esta equação, o processo de dilatação entre \(A\) e \(B\) corresponde ao conjunto de todas as translações de B com os pontos da imagem em que há pelo menos um elemento não nulo (com valor 1) em comum com o conjunto \(A\) \cite{pedrini:2008}. 
 
-% TODO: Figura
+Na Figura~\ref{fig:PDI_Dilatacao_1} está demonstrado a aplicação da dilatação em uma imagem de entrada (a) utilizando o elemento estruturante (b). A origem do elemento estruturante está indicada por uma cruz. Em (c) é possível ver o elemento estruturante sendo aplicado sobre o pixel da posição (3, 4). Na dilatação, caso a origem do elemento estruturante seja não nula, todos os pixels vizinhos receberão o valor do elemento estruturante. A imagem final está demonstrada em (d).
 
-A operação de erosão entre o conjunto A e o elemento estruturante B é definida como a subtração de \citet{minkowski:1911}, ou seja \[\varepsilon(A,B)=A\ominus B=\bigcap_{b\in B}^{ } (A-b)\]De acordo com esta equação, o processo de erosão entre A e B é conjunto de todos elementos de B transladados por p que estão contidos em A. O processo de erosão pode ser visualizado na Figura X.
+\begin{figure}[ht]
+\centering
+\caption{\textbf{Demonstração do processo de dilatação}}
+\includegraphics[width=0.5\textwidth]{imagens/PDI_Dilatacao_1.pdf}
+\sourceAuthor
+\label{fig:PDI_Dilatacao_1}
+\end{figure}
 
-% TODO: Figura
+O resultado do processo do dilatação é muito dependente do elemento estruturante utilizado. Na Figura~\ref{fig:PDI_Dilatacao_2} é possível ver o efeito de dois elementos estruturantes diferentes sendo aplicados sobre a mesma imagem de origem da Figura~\ref{fig:PDI_Dilatacao_1} (a).
+
+\begin{figure}[ht]
+\centering
+\caption{\textbf{Elementos estruturantes na dilatação}}
+\includegraphics[width=0.8\textwidth]{imagens/PDI_Dilatacao_2.pdf}
+\sourceAuthor
+\label{fig:PDI_Dilatacao_2}
+\end{figure}
+
+A operação de erosão entre o conjunto A e o elemento estruturante B é definida como a subtração de \citet{minkowski:1911}, ou seja \[\varepsilon(A,B)=A\ominus B=\bigcap_{b\in B}^{ } (A-b)\]
+
+De acordo com esta equação, o resultado da erosão pode ser calculado como o conjunto de pixels, tal que o elemento estruturante \(B\), transladado com respeito a cada um dos pixels dos objetos na imagem \(A\), corresponde ao conjunto de pixels dos objetos em A. Assim, os pixels que não correspondem ao padrão definido pelo elemento estruturante não pertencerão ao resultado. O processo de erosão está descrito na Figura~\ref{fig:PDI_Erosao_1}.
+
+\begin{figure}[ht]
+\centering
+\caption{\textbf{Demonstração do processo de erosão}}
+\includegraphics[width=0.5\textwidth]{imagens/PDI_Erosao_1.pdf}
+\sourceAuthor
+\label{fig:PDI_Erosao_1}
+\end{figure}
 
 \subsection{Abertura e Fechamento}
 
-Duas outras operações morfológicas importantes em análise de imagens são a abertura e o fechamento. A abertura de A por B, denotada AOB é definida como AOB=(AB)A \cite{pedrini:2008}. Isso significa que a abertura é a erosão de A por B, seguida da dilatação da imagem resultante por A.
+Duas outras operações morfológicas importantes em análise de imagens são a abertura e o fechamento. A abertura de A por B é definida como \(A \circ  B = (A \ominus B) \oplus A\) \cite{pedrini:2008}. Isso significa que a abertura é a erosão de A por B, seguida da dilatação da imagem resultante por A.
 
-O fechamento de A por B (AOB) é definido como AOB=(AB)A \cite{pedrini:2008}. Ou seja, é realizada a dilatação de A por B, seguida da erosão da imagem resultante por B.
+O fechamento de A por B é definido como \(A \bullet  B = (A \oplus B) \ominus A\) \cite{pedrini:2008}. Ou seja, é realizada a dilatação de A por B, seguida da erosão da imagem resultante por B.
 Na Figura X é possível visualizar o efeito dos processos de abertura e fechamento em uma imagem binária.
 
 % TODO: Figura
@@ -523,17 +486,17 @@ Na Figura X é possível visualizar o efeito dos processos de abertura e fechame
 
 Conforme \citet{conci:2003}, o uso de filtros em imagens objetiva melhorar a qualidade das imagens através da amplificação do seu contraste, eliminação de padrões periódicos ou aleatórios (como ruídos ou imperfeições das imagens), melhoria no seu foco e acentuação de características. Os filtros podem ser classificados como passa-baixa e passa-alta.
 	
-Para aplicação de filtros em imagens pode ser utilizado um processo denominado convolução. Conforme \cite{pedrini:2008}, a convolução é um processo que envolve a aplicação de uma máscara quadrada \(w\) de tamanho \(n\) por \(n\). Cada posição da máscara possui um valor numérico denominado peso ou coeficiente. Cada pixel \(f(x,y)\) da imagem é substituído por um novo valor, que depende do valor dos pixels vizinhos e dos pesos da máscara. Os coeficientes da máscara são multiplicados pela intensidade dos vizinhos correspondentes e então somados, resultando no valor do pixel central.
+Para a aplicação de filtros em imagens pode ser utilizado um processo denominado convolução. Conforme \cite{pedrini:2008}, a convolução é um processo que envolve a aplicação de uma máscara quadrada \(w\) de tamanho \(n\) por \(n\). Cada posição da máscara possui um valor numérico denominado peso ou coeficiente. Cada pixel \(f(x,y)\) da imagem é substituído por um novo valor, que depende do valor dos pixels vizinhos e dos pesos da máscara. Os coeficientes da máscara são multiplicados pela intensidade dos vizinhos correspondentes e então somados, resultando no valor do pixel central.
 
 % TODO: Marta: Não está claro... explicar melhor
 
 Denotando os níveis de cinza da imagem sob a máscara por \(z_i=f(x,y)\), \(1\leq i\leq 9\), a resposta da máscara é \(R=w_1.z_1+w_2.z_2+...+w_9z_9 = \sum_{i=1}^{9}w_i.z_i\) em que \(w_i\) representa os coeficientes das máscaras. Um exemplo de aplicação de convolução pode ser visualizado na Figura X.
 	
-%TODO: Figura
+% TODO: Figura
 
-\subsection{Filtros passa-baixa}
+\subsection{Filtros passa-baixas}
 
-São denominados filtros passa-baixas aqueles que atenuam ou eliminam os componentes de alta-frequência enquanto deixam as frequências baixas inalteradas. Os componentes de alta-frequência caracterizam bordas e outros detalhes finos de uma imagem, de forma que o efeito resultante da filtragem passa-baixas é o borramento da imagem \cite{gonzalez:2012}. Existem diversos filtros de classe passa-baixa, porém, neste trabalho, serão apresentados apenas os mais utilizados.
+São denominados filtros passa-baixas aqueles que atenuam ou eliminam os componentes de alta-frequência enquanto deixam as frequências baixas inalteradas. Os componentes de alta-frequência caracterizam bordas e outros detalhes finos de uma imagem, de forma que o efeito resultante da filtragem passa-baixas é o borramento da imagem \cite{gonzalez:2012}. Existem diversos filtros de classe passa-baixas, porém, neste trabalho, serão apresentados apenas os mais utilizados.
 
 \subsubsection{Filtro da Média e Mediana}
 
@@ -551,7 +514,7 @@ O filtro de média é considerado um filtro linear, pois ele efetua a suavizaç�
 
 Um filtro não-linear bastante empregado no processamento digital de imagem é o filtro de mediana, que consiste em substituir a intensidade de cada pixel pela mediana das intensidades na vizinhança do pixel. O filtro de mediana não utiliza a convolução, mas sim ordena a intensidade da vizinhança e utiliza a intensidade do pixel que estiver na posição central. Para uma vizinhança de \(n\)x\(n\) pixels, sendo \(n\) ímpar, a mediana das intensidades ordenada encontra-se na posição \(\frac{n^2+1}{2}\). Caso \(n\) seja par, é necessário realizar a média aritmética dos dois elementos mais próximos ao centro \cite{gonzalez:2012}. 
 
-Seus resultados são geralmente melhores que o filtro da média. Isso ocorre devido ao fato de que, se existe um ruídos entre os elementos da máscara, este valor estará presente nas primeiras ou últimas posições da vizinhança ordenada. Assim, valores de intensidade discrepantes serão completamente desconsiderados, ao invés de impactar no valor da intensidade \cite{conci:2003}. Na Figura~\ref{fig:PDI_Media_Mediana} é possível ver a comparação entre os filtros de média (b) e mediana (c) para a remoção do ruído de tipo sal e pimenta da imagem original (a).
+Seus resultados são geralmente melhores que o filtro da média. Isso ocorre devido ao fato de que, se existe um ruído entre os elementos da máscara, este valor estará presente nas primeiras ou últimas posições da vizinhança ordenada. Assim, valores de intensidade discrepantes serão completamente desconsiderados, ao invés de impactar no valor da intensidade \cite{conci:2003}. Na Figura~\ref{fig:PDI_Media_Mediana} é possível ver a comparação entre os filtros de média (b) e mediana (c) para a remoção do ruído de tipo sal e pimenta da imagem original (a).
 
 \begin{figure}[ht]
 \centering
@@ -563,7 +526,7 @@ Seus resultados são geralmente melhores que o filtro da média. Isso ocorre dev
 
 \subsubsection{Filtro Gaussiano}
 
-Segundo \citet{conci:2003} o filtro de Gauss ou Gaussiano é o filtro linear passa-baixa mais importante. Assim como outros filtros dessa classe, é utilizado para reduzir a quantidade de variação de intensidade entre um pixel e seus vizinhos, efetuando a redução de ruídos e outras trocas bruscas de frequência da imagem. Na Figura~\ref{fig:PDI_Gauss} é possível ver a aplicação do filtro Gaussiano em uma imagem (a) com máscaras de tamanho 3x3 (b) e 5x5 (c).
+Segundo \citet{conci:2003}, o filtro de Gauss ou Gaussiano é o filtro linear passa-baixa mais importante. Assim como outros filtros dessa classe, é utilizado para reduzir a quantidade de variação de intensidade entre um pixel e seus vizinhos, efetuando a redução de ruídos e outras trocas bruscas de frequência da imagem. Na Figura~\ref{fig:PDI_Gauss} é possível ver a aplicação do filtro Gaussiano em uma imagem (a) com máscaras de tamanho 3x3 (b) e 5x5 (c).
 
 \begin{figure}[ht]
 \centering
@@ -573,7 +536,7 @@ Segundo \citet{conci:2003} o filtro de Gauss ou Gaussiano é o filtro linear pas
 \label{fig:PDI_Gauss}
 \end{figure}
 
-Segundo \citet{pedrini:2008}, os coeficientes da máscara de processamento do filtro Gaussiano são obtidos através de uma função Gaussiana bidimensional. A função Gaussiana com média zero e desvio padrão é descrita por \[G(x,y)=\frac{1}{2\pi\sigma\theta^2} e^{\frac{-(x^2+y^2)}{2\sigma^2}  }\]
+Segundo \citet{pedrini:2008}, os coeficientes da máscara de processamento do filtro Gaussiano são obtidos através de uma função Gaussiana bidimensional. A função Gaussiana com média zero e desvio padrão \(\sigma\) é descrita por \[G(x,y)=\frac{1}{2\pi\sigma\theta^2} e^{\frac{-(x^2+y^2)}{2\sigma^2}  }\]
 
 A aplicação do filtro Gaussiano é feita com operações de convolução, então é necessário transformar a função gaussiana em estrutura de uma máscara. O tamanho da máscara que descreve o filtro de Gauss é muito grande, mas é possível descartar os valores que estão além de três posições do centro \cite{conci:2003}. Duas máscaras desse filtro estão exemplificadas abaixo, ambas com desvio-padrão igual a 1.
 
@@ -592,7 +555,7 @@ Z=\frac{1}{16}\begin{bmatrix}
 \end{bmatrix}
 \]
 
-\subsection{Filtros passa-alta}
+\subsection{Filtros passa-altas}
 
 Os filtros passa-altas atenuam ou eliminam os componentes de baixa-frequência, mantendo frequências altas. Como as baixas frequências são responsáveis pelas características que variam lentamente em uma imagem, como o contraste total e a intensidade média, o efeito resultante da filtragem passa-altas é uma redução destas características, correspondente a uma aparente agudização de bordas, trocas repentinas de intensidade e também ruídos \cite{gonzalez:2012}. Existem inúmeros filtros do tipo passa-alta, alguns destes sendo apresentados neste trabalho.
 
@@ -656,7 +619,7 @@ y_o\\
 
 \subsection{Escala}
 
-A mudança de escala significa variar o seu tamanho, de forma semelhante a um zoom in ou zoom out. A operação básica consiste em multiplicar cada um de seus pontos \((x_o,y_o)\) por um fator escalar \((S_x,S_y)\). A escala 2D na forma matricial em coordenadas homogêneas é definida pela equação
+A mudança de escala significa variar o seu tamanho, de forma semelhante a um \textit{zoom in} ou \textit{zoom out}. A operação básica consiste em multiplicar cada um de seus pontos \((x_o,y_o)\) por um fator escalar \((S_x,S_y)\). A escala 2D na forma matricial em coordenadas homogêneas é definida pela equação
 
 \[
 \begin{bmatrix}
@@ -685,6 +648,8 @@ A rotação utilizando um ângulo  relativo à origem consiste em encontrar, par
 
 % TODO: Marta: Com esta matriz tu mostra a rotação somente em um sentido.... deves complementar
 
+% TODO: Marta: Depende, existem máscaras diferentes para cada eixo
+
 \[
 \begin{bmatrix}
 x_d\\ 
@@ -706,7 +671,7 @@ y_o\\
 
 \subsection{Espelhamento}
 
-Conforme \citet{conci:2003}, a transformação de espelhamento (também chamada de reflexão ou flip) em torno de um eixo é uma operação que combina a rotação por ângulos múltiplos de 90º com a inversão das coordenadas. Um espelhamento horizontal é uma rotação de 180º no sentido anti-horário com coordenadas yo invertidas. Já o flip vertical é uma rotação de 180º no sentido horário com os valores das coordenadas xoinvertidos.
+Conforme \citet{conci:2003}, a transformação de espelhamento (também chamada de reflexão ou flip) em torno de um eixo é uma operação que combina a rotação por ângulos múltiplos de 90º com a inversão das coordenadas. Um espelhamento horizontal é uma rotação de 180º no sentido anti-horário com coordenadas \(y_o\) invertidas. Já o flip vertical é uma rotação de 180º no sentido horário com os valores das coordenadas \(x_o\) invertidos.
 	Em coordenadas homogêneas o flip horizontal é obtido por
 \[
 \begin{bmatrix}
@@ -759,7 +724,7 @@ Na Figura~\ref{fig:PDI_Transformacoes_Geometricas} é possível visualizar o efe
 \section{Segmentação de Regiões}
 Conforme \cite{pedrini:2008} os métodos de segmentação de regiões detectam as regiões diretamente na imagem, ao invés de encontrar as bordas que delimitam as regiões. Os pontos apresentando propriedades similares são agrupados para formar uma região. Diversas propriedades podem ser usadas para caracterizar uma região, tal como intensidade de cinza, cor, informação semântica ou textura.
 
-Os principais métodos de segmentação baseada em regiões podem ser classificados em crescimento de regiões, divisão de regiões, divisão e fusão de regiões e divisor de águas ou watersheds.
+Os principais métodos de segmentação baseada em regiões podem ser classificados em crescimento de regiões, divisão de regiões, divisão e fusão de regiões e divisor de águas ou \textit{watersheds}.
 
 \subsection{Crescimento de Regiões}
 
@@ -876,22 +841,24 @@ O algoritmo de Holt (HOLT et al., 1987) utiliza uma vizinhança 3 x 3 para a an�
 \label{fig:PDI_Holt_1}
 \end{figure}
 
-% TODO: Revisar isso aqui
 O algoritmo possui duas funções que são definidas por:
-v(): Retorna verdadeiro se o valor do ponto for o mesmo valor do objeto (valor preto) e falso se o valor do ponto for igual ao valor do plano de fundo (valor branco)
-edge():Retorna verdadeiro se o valor processado estiver na borda do objeto e falso se não estiver
-Um pixel está na borda quando sua conectividade é igual a 1 e quando possuir de 2 a 6 vizinhos conectados. 
+\begin{enumerate}
+\item \(v()\): Retorna verdadeiro se o valor do ponto for o mesmo valor do objeto (valor preto) e falso se o valor do ponto for igual ao valor do plano de fundo (valor branco)
+\item \(edge()\):Retorna verdadeiro se o valor processado estiver na borda do objeto e falso se não estiver
+\begin{enumerate}[label*=\roman*.]
+    \item Um pixel está na borda quando sua conectividade é igual a 1 e quando possuir de 2 a 6 vizinhos conectados. 
+  \end{enumerate}
+\end{enumerate}
 
 Segundo \citet{guilherme:2007}, o algoritmo de Holt é composto por duas expressões lógicas, onde uma é aplicada na primeira iteração do algoritmo e a outra na segunda iteração. Para um ponto ser removido, o resultado das expressões lógicas devem ser verdadeiros.
 
 % TODO: Marta: Tens que explicar estas expressões lógicas
 
-% TODO: Ajustar isso aqui
 Primeira iteração: 
-%v(C) \^ (∼ edge(C) v (v(L) ∨ v(S) v (v(N ) ∨ v(O))))
+\(v(C) \wedge (~ edge(C) \vee (v(L) \vee v(S) \vee (v(N) \vee v(O))))\)
 
 Segunda iteração:
-%v(C) \^ (∼ edge(C) v (v(O) ∨ v(N ) ∨ (v(S) ∨ v(L))))
+\(v(C) \wedge (~ edge(C) \vee (v(O) \vee v(N) \vee (v(S) \vee v(L))))\)
 
 % ------------------------------------------------------------------------------------------------------------------------
 \chapter{Trabalhos Correlatos}
@@ -902,7 +869,7 @@ Neste capítulo serão apresentados trabalhos relacionados a área de pesquisa d
 
 \section{O Uso do Algoritmo Genético em Segmentação de Imagens Digitais}
 
-A tese desenvolvida por \citet{matias:2007} aplica algoritmos genéticos com diferentes funções de avaliação para evoluir a parametrização de diversos três métodos de segmentação de imagens digitais, comparando seu resultado. Os algoritmos de segmentação analisados são \textit{quadtrees}, limiarização e crescimento de regiões.
+A tese desenvolvida por \citet{matias:2007} aplica algoritmos genéticos com diferentes funções de avaliação para evoluir a parametrização de três métodos de segmentação de imagens digitais, comparando seu resultado. Os algoritmos de segmentação analisados são \textit{quadtrees}, limiarização e crescimento de regiões.
 
 Todos os métodos visam minimizar uma função objetivo (entropia, segmentação excedente, entre outras) ou maximizar tal função (pixels corretamente agrupados). Para avaliação dos resultados, foram geradas várias imagens que utilizam o GA no algoritmo de segmentação e outras imagens geradas com o mesmo algoritmo, mas sem utilizar o GA. 
 
@@ -911,7 +878,7 @@ O método mais simples trabalhado por \citet{matias:2007} é a segmentação uti
 
 Para a segmentação baseada em limiar a representação cromossômica foi utilizado um cromossomo de 8 genes binários, representando o valor do \textit{threshold} entre 0 e 255. 
 
-Uma imagem utilizada para testes foi uma foto de 256x256 pixels denominada Lena. Para treinamento do GA foi utilizado uma população de 25 indivíduos, com uma probabilidade de mutação de 0.05 e uma probabilidade de \textit{crossover} de 0.6. O número máximo de gerações delimitado para o GA foi de 1000 gerações. A segmentação com a melhor função objetivo obtida por este método está exemplificada na Figura~\ref{fig:TrCo_Matias_Limiar_1}.
+Uma imagem utilizada para testes foi uma foto de 256x256 pixels denominada Lena. Para treinamento do GA foi utilizada uma população de 25 indivíduos, com uma probabilidade de mutação de 0.05 e uma probabilidade de \textit{crossover} de 0.6. O número máximo de gerações delimitado para o GA foi de 1000 gerações. A segmentação com a melhor função objetivo obtida por este método está exemplificada na Figura~\ref{fig:TrCo_Matias_Limiar_1}.
 
 \begin{figure}[ht]
 \centering
@@ -931,23 +898,41 @@ Também foram realizados os mesmos testes utilizando uma foto de satélite do Ri
 \label{fig:TrCo_Matias_Limiar_2}
 \end{figure}
 
-Outro método implementado pela teste foi o método de segmentação por quadrantes, ou \textit{quadtree}. Neste método, o algoritmo genético foi utilizado para geração dos valores de entropia de cada nível da \textit{quatree}. Em uma imagem de resolução \(N\)x\(N\) pixels, o número de níveis representados por cada cromossomo é \(Lv=\log 2 N\). Cada valor do nível \(Lv_n\) representado no cromossomo indica o limiar de entropia daquele quadrante para que o mesmo seja subdividido novamente. O exemplo do cromossomo pode ser visto na Figura X.
+Outro método implementado pela teste foi o método de segmentação por quadrantes, ou \textit{quadtree}. Neste método, o algoritmo genético foi utilizado para geração dos valores de entropia de cada nível da \textit{quatree}. Em uma imagem de resolução \(N\)x\(N\) pixels, o número de níveis representados por cada cromossomo é \(Lv=\log 2 N\). Cada valor do nível \(Lv_n\) representado no cromossomo indica o limiar de entropia daquele quadrante para que o mesmo seja subdividido novamente. O exemplo do cromossomo pode ser visto na Figura~\ref{fig:TrCo_Matias_Cromossomo_1}.
 
-% TODO: Copiar a figura da página 54
+\begin{figure}[ht]
+\centering
+\caption{\textbf{Cromossomo binário onde L corresponde a cada nível da quadtree}}
+\includegraphics[width=0.8\textwidth]{imagens/TrCo_Matias_Cromossomo_1.PNG}
+\source{\citet[pg.54]{matias:2007}}
+\label{fig:TrCo_Matias_Cromossomo_1}
+\end{figure}
 
-Para validação da técnica de segmentação por \textit{quadtrees} foi utilizada a foto de satélite do Rio Solimões. A resolução da imagem é 256x256, o que gera uma Quadtree de 8 níveis. Para esta imagem foi executado o GA com uma população inicial aleatória de 300 indivíduos. A probabilidade de mutação utilizada foi de 0,1 e a probabilidade de \textit{crossover} foi de 0,6. A GA foi executada por um total de 9 gerações. O resultado da segmentação pode ser visto na Figura X. É possível identificar que a segmentação utilizando \textit{quadtrees} e GAs foi mais eficiente que o método usual, gerando maiores áreas homogêneas, o que pode ser útil para compressão de imagens.
+Para validação da técnica de segmentação por \textit{quadtrees} foi utilizada a foto de satélite do Rio Solimões. A resolução da imagem é 256x256, o que gera uma Quadtree de 8 níveis. Para esta imagem foi executado o GA com uma população inicial aleatória de 300 indivíduos. A probabilidade de mutação utilizada foi de 0,1 e a probabilidade de \textit{crossover} foi de 0,6. A GA foi executada por um total de 9 gerações. O resultado da segmentação pode ser visto na Figura~\ref{fig:TrCo_Matias_Quadtree_1}. É possível identificar que a segmentação utilizando \textit{quadtrees} (c) e GAs foi mais eficiente que o método usual (b), gerando maiores áreas homogêneas, o que pode ser útil para compressão de imagens.
 
-% TODO: Copiar a figura da página 68
+\begin{figure}[ht]
+\centering
+\caption{\textbf{Comparação da segmentação via \textit{quadtree}}}
+\includegraphics[width=0.6\textwidth]{imagens/TrCo_Matias_Quadtree_1.PNG}
+\source{\citet[pg.68]{matias:2007}}
+\label{fig:TrCo_Matias_Quadtree_1}
+\end{figure}
 
-Outro método de segmentação de imagens testado por \citet{matias:2007} foi o método de crescimento de regiões proposto por \citet{bins:1996}, um método que é direcionado a imagens de sensoriamento remoto. Este algoritmo utiliza dois parâmetros de entrada: o limiar de similaridade, utilizado para agrupar os pixels que estejam dentro deste valor, e a área máxima das regiões para evitar problemas de \textit{under-segmentation}.
+Outro método de segmentação de imagens testado por \citet{matias:2007} foi o método de crescimento de regiões proposto por \citet{bins:1996}, um método que é direcionado a imagens de sensoriamento remoto. Este algoritmo utiliza dois parâmetros de entrada: o limiar de similaridade, utilizado para agrupar os pixels que estejam dentro deste valor, e a área máxima das regiões, para evitar problemas de \textit{under-segmentation}.
 
 % TODO: Que métricas são essas?
 
-A representação cromossômica deste método são os dois parâmetros de entrada concatenados em uma string de \(K\) bits, onde \(K = \log_2 T + A\), sendo \(T\) o número máximo de tons de cinza da imagem e \(A\) um número suficiente de bits para armazenar a área máxima, neste caso \(A = 16\). Para validação do método, ao invés da entropia da imagem foram utilizadas três métricas de avaliação de algoritmos de segmentação: CG, US e OS.
+A representação cromossômica deste método são os dois parâmetros de entrada concatenados em uma \textit{string} de \(K\) bits, onde \(K = \log_2 T + A\), sendo \(T\) o número máximo de tons de cinza da imagem e \(A\) um número suficiente de bits para armazenar a área máxima, neste caso \(A = 16\). Para validação do método, ao invés da entropia da imagem, foram utilizadas três métricas de avaliação de algoritmos de segmentação: CG, US e OS.
 
-Para validação do processo de segmentação, foi utilizada uma foto de satélite de uma mancha de petróleo no mar, de resolução 256x256. Para a simulação do GA foi utilizada uma população de tamanho de 25 indivíduos aleatórios. A probabilidade de mutação utillizada foi de 0.05 e a probabilidade de \textit{crossover} foi de 0,6. O número máximo de gerações do GA foi de 1000. Ao final do processamento, foi obtida a saída representada na Figura X. Os valores do método de avaliação para a imagem segmentada sem GA (b) e com GA (c) pode ser visto na Tabela~\ref{tab:TrCo_Matias_1}.
+Para validação do processo de segmentação, foi utilizada uma foto de satélite de uma mancha de petróleo no mar, de resolução 256x256. Para a simulação do GA foi utilizada uma população de tamanho de 25 indivíduos aleatórios. A probabilidade de mutação utillizada foi de 0.05 e a probabilidade de \textit{crossover} foi de 0,6. O número máximo de gerações do GA foi de 1000. Ao final do processamento, foi obtida a saída representada na Figura~\ref{fig:TrCo_Matias_Crescimento_1}. Os valores do método de avaliação para a imagem segmentada sem GA (b) e com GA (c) pode ser visto na Tabela~\ref{tab:TrCo_Matias_1}.
 
-% TODO: Copiar a figura da página 74
+\begin{figure}[ht]
+\centering
+\caption{\textbf{Comparação da segmentação via crescimento de regiões}}
+\includegraphics[width=0.6\textwidth]{imagens/TrCo_Matias_Crescimento_1.PNG}
+\source{\citet[pg.68]{matias:2007}}
+\label{fig:TrCo_Matias_Crescimento_1}
+\end{figure}
 
 \begin{table}[]
 \centering
@@ -956,12 +941,12 @@ Para validação do processo de segmentação, foi utilizada uma foto de satéli
 \begin{tabular}{llll}
 \hline
 \multicolumn{1}{c}{\textit{\textbf{Caso}}} & \multicolumn{1}{c}{\textit{\textbf{CG}}} & \multicolumn{1}{c}{\textit{\textbf{US}}} & \multicolumn{1}{c}{\textit{\textbf{OS}}} \\ \hline
-Sem GA                                     & 10,17\%                                  & 18,33\%                                  & 82,21\%                                  \\ \hline
+Sem GA                                     & 10,17\%                                  & 18,33\%                                  & 82,21\%                                  \\
 Com GA                                     & 90,44\%                                  & 3,74\%                                   & 4,71\%                                   \\ \hline
 \end{tabular}
 \end{table}
 
-Dessa maneira \citet{matias:2007} verificou que o uso do GA com uma função objetivo adequada pode trabalhar muito bem em conjunto com algoritmos de segmentação, na busca de bons parâmetros de entrada iniciais. Isso foi comprovado nos três algoritmos testados: limiarização, \textit{quadtrees} e crescimento de regiões.
+Dessa maneira, \citet{matias:2007} verificou que o uso do GA com uma função objetivo adequada pode trabalhar muito bem em conjunto com algoritmos de segmentação, na busca de bons parâmetros de entrada iniciais. Isso foi comprovado nos três algoritmos testados: limiarização, \textit{quadtrees} e crescimento de regiões.
 
 \section{\textit{A genetic algorithm for image segmentation}}
 
@@ -1632,20 +1617,18 @@ to find multiple thresholds for complex image analysis
 \chapter{Proposta}
 % ------------------------------------------------------------------------------------------------------------------------
 
-Neste trabalho é propsto um sistema de aprendizado de máquina utilizando algoritmos genéticos com técnicas de processamento digital de imagens para segmentação de imagens, focando na segmentação de fotos de rostos. De forma semelhante aos trabalhos apresentados anteriormente, os GAs serão utilizados para evoluir os parâmetros das técnicas de processamento de imagem. No entanto, o principal objetivo deste trabalho é conseguir que o GA selecione também quais técnicas de PDI e em qual sequência os mesmos serão executados para obter o melhor resultado do processo de segmentação.
+Neste trabalho é proposto um sistema de aprendizado de máquina utilizando algoritmos genéticos com técnicas de processamento digital de imagens para segmentação de imagens, focando na segmentação de fotos de rostos. De forma semelhante aos trabalhos apresentados anteriormente, os GAs serão utilizados para evoluir os parâmetros das técnicas de processamento de imagem. No entanto, o principal objetivo deste trabalho é conseguir que o GA selecione também quais técnicas de PDI e em qual sequência os mesmos serão executados para obter o melhor resultado do processo de segmentação.
 
-% TODO: Citar VISNode
 % TODO: Colocar uma figura explicando o VISNode
-Este trabalho se baseia no \textit{software} VISNode, uma ferramenta para execução de técnicas de PDI em formato de grafo. Ele possui dezenas de algoritmos de PDI implementados que serão utilizados neste trabalho. Cada nodo possui entradas e saídas, sendo que estas podem ser conectadas entre si, garantindo uma maior flexibilidade no sequenciamento e execução dos algoritmos.
+Este trabalho se baseia no \textit{software} VISNode \cite{visnode}, uma ferramenta para execução de técnicas de PDI em formato de grafo. Ele possui dezenas de algoritmos de PDI implementados que serão utilizados neste trabalho. Cada nodo possui entradas e saídas, sendo que estas podem ser conectadas entre si, garantindo uma maior flexibilidade no sequenciamento e execução dos algoritmos.
 
 % TODO: Figura com Sobel -> Snakes e outra com Média -> Threshold
-No GA proposto, cada indivíduo irá representar um grafo de processos de PDI, permitindo a parametrização estática (valor fixo para o parâmetro) ou dinâmica (vindo de outro nodo do grafo) de cada algoritmo. Como exemplo de possíveis indivíduos do GA, considere a Figura X. Em (a), o indivíduo representa a execução da detecção de bordas de Sobel, seguida de uma limiarização e a execução do algoritmo de Snakes para preenchimento das regiões. Em (b), está representado o cromossomo que obtém a média dos tons de cinza da imagem e utiliza isso como limiar para o processo de \textit{thresholding}. Em (c), a imagem ainda coloriza está sendo dividida em três imagens tons de cinza baseada nos seus canais RGB, é efetuado um limiar fixo em cada uma delas, para então se unir os conjuntos gerados.
+No GA proposto, cada indivíduo representará um grafo de processos de PDI, permitindo a parametrização estática (valor fixo para o parâmetro) ou dinâmica (vindo de outro nodo do grafo) de cada algoritmo. Como exemplo de possíveis indivíduos do GA, considere a Figura X. Em (a), o indivíduo representa a execução da detecção de bordas de Sobel, seguida de uma limiarização e a execução do algoritmo de \textit{Snakes} para preenchimento das regiões. Em (b), está representado o cromossomo que obtém a média dos tons de cinza da imagem e utiliza isso como limiar para o processo de \textit{thresholding}. Em (c), a imagem ainda colorida está sendo dividida em três imagens tons de cinza baseadas nos seus canais RGB, é efetuado um limiar fixo em cada uma delas, para então se unir os conjuntos gerados.
 
-% TODO: Citar FASSEG
 % TODO: Colocar uma imagem de exemplo do FASSEG
-Para avaliação dos indivíduos do GA e validação do trabalho, está sendo utilizada a base de rostos segmentados FASSEG. Esta base possui 70 fotos de rostos normalizados (com posição e iluminação semelhantes) e as imagens já segmentadas delineando o rosto, olhos, cabelo, boca e nariz em cores diferentes. Neste trabalho o objetivo principal é que seja possível segmentar de forma satisfatória o contorno do rosto, ou seja, sem o fundo e sem os cabelos, mas contendo olhos e boca.
+Para avaliação dos indivíduos do GA e validação do trabalho, está sendo utilizada a base de rostos segmentados FASSEG \cite{fasseg}. Esta base possui 70 fotos de rostos normalizados (com posição e iluminação semelhantes) e as imagens já segmentadas delineando o rosto, olhos, cabelo, boca e nariz em cores diferentes. Neste trabalho o objetivo principal é que seja possível segmentar de forma satisfatória o contorno do rosto, ou seja, sem o fundo e sem os cabelos, mas contendo olhos e boca.
 
-O método para validação das imagens é uma simples comparação pixel a pixel da imagem gerada pelo GA e com a imagem pré-segmentada do FASSEG. Com uma imagem de entrada da base selecionada, o método gerado pelo GA é executado, gerando sempre uma imagem binária. Esta imagem é então comparada com a imagem pré-segmentada da base, contando o número de pixels corretos \(c\). Este número é então dividido pelo número total de pixels de imagem \(t\) dando a função objetivo \(F\) que representa o percentual de asserção deste indivíduo. Dessa forma, \(F\) pode ser definido como \(F = \frac{c}{t}\).
+O método para validação das imagens é uma simples comparação pixel a pixel da imagem gerada pelo GA com a imagem pré-segmentada do FASSEG. Com uma imagem de entrada da base selecionada, o método gerado pelo GA é executado, gerando sempre uma imagem binária. Esta imagem é então comparada com a imagem pré-segmentada da base, contando o número de pixels corretos \(c\). Este número é então dividido pelo número total de pixels de imagem \(t\), dando a função objetivo \(F\), que representa o percentual de asserção deste indivíduo. Dessa forma, \(F\) pode ser definido como \(F = \frac{c}{t}\).
 
 \section{Representação cromossomial}
 
@@ -1659,40 +1642,38 @@ Cada nodo do grafo representado por cada indivíduo possui um processo vinculado
 
 \section{Definição do GA}
 
-Para construção do algoritmo genético serão os indicados pela literatura, sendo eles mutação, \textit{crossover} e seleção por roleta viciada. Serão testadas algumas variações destes métodos, como \textit{crossover} de um ponto, dois pontos ou uniforme e roleta viciada normalizada, selecionado aqueles que trouxerem o melhor resultado. Também serão testadas variáções dos parâmetros do GA, como taxa de mutação e taxa de \textit{crossover}, a fim de otimizar os resultados encontrados.
+Para construção do algoritmo genético serão usados os indicados pela literatura, sendo eles mutação, \textit{crossover} e seleção por roleta viciada. Serão testadas algumas variações destes métodos, como \textit{crossover} de um ponto, dois pontos ou uniforme e roleta viciada normalizada, selecionando aqueles que trouxerem o melhor resultado. Também serão testadas variações dos parâmetros do GA, como taxa de mutação e taxa de \textit{crossover}, a fim de otimizar os resultados encontrados.
 
 % ------------------------------------------------------------------------------------------------------------------------
 \chapter{Desenvolvimento}
 % ------------------------------------------------------------------------------------------------------------------------
 
-No início do desenvolvimento deste trabalho, foi construído um protótipo para avaliar a viabilidade da proposta. O intuito deste teste era implementar um GA para evolução de técnicas de PDI e seus parâmetros para realizar a segmentação de uma única imagem (overfeeding).
+No início do desenvolvimento deste trabalho, foi construído um protótipo para avaliar a viabilidade da proposta. O intuito deste teste era implementar um GA para evolução de técnicas de PDI e seus parâmetros para realizar a segmentação de uma única imagem (\textit{overfitting}).
 
-% Ajustar referência do FASSEG
-Para o teste, foi selecionada uma imagem de um rosto da base de imagens FASSEG (FASSEG, 2018). Para avaliação da imagem, foi realizada a comparação pixel a pixel da imagem de saída do GA com o gabarito disponível na base.
+Para o teste, foi selecionada uma imagem de um rosto da base de imagens FASSEG \cite{fasseg}. Para avaliação da imagem, foi realizada a comparação pixel a pixel da imagem de saída do GA com o gabarito disponível na base.
 
-Nesta fase, o cromossomo era composto de 42 genes, divididos em 7 grupos de 6 genes. O primeiro gene de cada grupo indicava qual técnica de PDI deveria ser utilizada, e os outros 5 genes possuem parâmetros para a execução do algoritmo. O GA poderia escolher entre sete algoritmos de PDI diferentes, demonstrados na Tabela X.
+Nesta fase, o cromossomo era composto de 42 genes, divididos em 7 grupos de 6 genes. O primeiro gene de cada grupo indicava qual técnica de PDI deveria ser utilizada, e os outros 5 genes possuem parâmetros para a execução do algoritmo. O GA poderia escolher entre sete algoritmos de PDI diferentes, demonstrados na Tabela~\ref{tab:AlgoritmosTeste1}.
 
-Algoritmo
-Parâmetros
-Conversão para tons de cinza
+\begin{table}[]
+\centering
+\caption{Algoritmos utilizados}
+\label{tab:AlgoritmosTeste1}
+\begin{tabular}{ll}
+\hline
+\textit{\textbf{Algoritmo}}  & \textit{\textbf{Parâmetros}}                                                           \\ \hline
+Conversão para tons de cinza &                                                                                        \\ 
+Limiarização                 & {[}1{]} Limiar, 0-255                                                                  \\ 
+Inversão de cores            &                                                                                        \\ 
+Ajuste de brilho             & {[}1{]} Brilho, -255 -255                                                              \\ 
+Ajuste de contraste          & {[}1{]} Contraste, 0 - 3                                                               \\ 
+Filtor de mediana            &                                                                                        \\ 
+Filtro gaussiano             & \begin{tabular}[c]{@{}l@{}}{[}1{]} Sigma, 0 - 3;\\ {[}2{]} Máscara, 3 - 1\end{tabular} \\ \hline
+\end{tabular}
+\end{table}
 
+Para execução do GA, foi utilizado uma população de tamanho 150, e o mesmo foi executado por 100 gerações. Ao final da execução, a melhor solução encontrada possui uma avaliação de 0,9692, ou seja, 96,92\% de assertividade com o gabarito. O resultado final do algoritmo pode ser visto na Figura X
 
-Limiarização
-[1] Limiar, 0 - 255
-Inversão de cores
-
-
-Ajuste de brilho
-[1] Brilho, -255 - 255
-Ajuste de contraste
-[1] Contraste, 0 - 3
-Filtro de Mediana
-
-
-Filtro Gaussiano
-[1] Sigma, 0 - 3; [2] Máscara, 3 - 11
-
-Para execução do GA, foi utilizado uma população de tamanho 150, e o mesmo foi executado por 100 gerações. Ao final da execução, a melhor solução encontrada possui uma avaliação de 0,9692, ou seja, 96,92% de assertividade com o gabarito. O resultado final do algoritmo pode ser visto na Figura X
+% TODO: Figura
 
 
 % ---
